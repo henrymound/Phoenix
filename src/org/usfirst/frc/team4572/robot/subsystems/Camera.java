@@ -13,6 +13,8 @@ public class Camera extends Subsystem {
 			NIVision.IMAQdxCameraControlMode.CameraControlModeController);
     public Image frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
     
+    public int numCommands = 0;
+    
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new CameraUpdate());

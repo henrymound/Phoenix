@@ -19,13 +19,20 @@ public class CameraUpdate extends CommandBase {
     protected void initialize() {
     	NIVision.IMAQdxConfigureGrab(camera.session);
     	SmartDashboard.putString("Camera Update", "Initialized");
+    	SmartDashboard.putBoolean("Camera Light On: ", false);
+    	new FindYellowTotes();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	NIVision.IMAQdxGrab(camera.session, camera.frame, 1);
     	//CameraServer.getInstance().setImage(camera.frame);
-    	new FindYellowTotes();
+    	//camera.numCommands++;
+    	if (SmartDashboard.getBoolean("Camera Light On: ")){
+        	new CameraLightOn();
+    	}
+    	
+    	SmartDashboard.putString("Number of Commands:", ""+camera.numCommands);
     }
 
     // Make this return true when this Command no longer needs to run execute()
