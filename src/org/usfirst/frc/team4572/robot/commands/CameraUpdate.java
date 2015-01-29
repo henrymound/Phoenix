@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4572.robot.commands;
 
+import org.usfirst.frc.team4572.robot.commands.FindYellowTotes;
+
 import com.ni.vision.NIVision;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -22,7 +24,8 @@ public class CameraUpdate extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	NIVision.IMAQdxGrab(camera.session, camera.frame, 1);
-    	CameraServer.getInstance().setImage(camera.frame);
+    	//CameraServer.getInstance().setImage(camera.frame);
+    	new FindYellowTotes();
     }
 
     // Make this return true when this Command no longer needs to run execute()
